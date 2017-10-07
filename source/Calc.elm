@@ -1,8 +1,10 @@
 port module Calc exposing (..)
 
 import Platform exposing (..)
+
+-- https://github.com/elm-lang/elm-make/issues/127
 import Json.Decode exposing (..)
-import Json.Encode exposing (..)
+import Json.Encode exposing (..) 
 
 type Msg = Input (List Float)
 

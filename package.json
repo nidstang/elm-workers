@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run dependencies && npm run webpack",
+    "webpack": "./node_modules/.bin/webpack",
+    "dependencies": "./node_modules/.bin/elm-package install -y",
+    "dev": "./node_modules/.bin/webpack-dev-server"
   },
   "author": "Pablo Fernandez Franco",
   "license": "ISC",

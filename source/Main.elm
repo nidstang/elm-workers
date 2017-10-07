@@ -10,7 +10,7 @@ type alias Model =
     , result : Float
     }
 
-type Msg = SetA Float | SetB Float | Calc | ReceiveResult Float
+type Msg = SetA String | SetB String | Calc | ReceiveResult Float
 
 port sendData : List Float -> Cmd msg
 port receiveResult : (Float -> msg) -> Sub msg
@@ -26,7 +26,7 @@ main =
 
 init : (Model, Cmd Msg)
 init =
-    (0.0, 0.0, 0.0, Cmd.none)
+    (Model 0.0 0.0 0.0, Cmd.none)
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
@@ -36,9 +36,9 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of
         SetA number ->
-            ({ model | a = number }, Cmd.none)
+            ({ model | a = (Result.withDefault 0 (String.toFloat number)) }, Cmd.none)
         SetB number ->
-            ({ model | b = number }, Cmd.none)
+            ({ model | b = (Result.withDefault 0 (String.toFloat number)) }, Cmd.none)
         Calc ->
             (model, sendData [model.a, model.b])
         ReceiveResult result ->
@@ -47,7 +47,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [] 
-        [ input [ onInput SetA, placeholder "Number one" ] [ ]
-        , input [ onInput SetB, placeholder "Number two" ] [ ]
-        , input [] [ text model.result ] 
+        [ input [ onInput SetA, placeholder "Number one", Html.Attributes.type_ "number" ] [ ]
+        , input [ onInput SetB, placeholder "Number two", Html.Attributes.type_ "number" ] [ ]
+        , input [ value (toString model.result) ] [ ] 
         , button [ onClick Calc ] [ text "Calc" ] ]

@@ -1,6 +1,6 @@
 'use strict';
 
-let BrainWorker = require("worker-loader!./worker.js")
+let BrainWorker = require("worker-loader!./worker.js");
 let Main        = require("./source/Main.elm").Main;
 let mountNode   = document.getElementById("app");
 

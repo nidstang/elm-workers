@@ -1,4 +1,4 @@
-'use string';
+'use strict';
 let Calc        = require("./source/Calc.elm").Calc;
 let brain       = Calc.worker();
 

@@ -12,4 +12,4 @@ npm run dev
 Go to [http://localhost:3000](http://localhost:3000) to see it in action.
 
 # Requirements
-To run this program you'll need download and install [https://nodejs.org/es/](node.js) for your platform.
+To run this program you'll need to download and install [https://nodejs.org/es/](node.js) for your platform.
